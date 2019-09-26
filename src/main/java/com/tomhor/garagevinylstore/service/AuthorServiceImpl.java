@@ -25,10 +25,10 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public Optional<Author> findById(Long id) {
+    public Author findById(Long id) {
         Optional<Author> authorOptional = authorRepository.findById(id);
         authorOptional.orElseThrow(() -> new EntityNotFoundException("Nie znaleziono autora o podanym id " + id));
-        return authorOptional;
+        return authorOptional.get();
     }
 
     @Override
@@ -47,4 +47,5 @@ public class AuthorServiceImpl implements AuthorService {
     public Author save(Author author) {
         return authorRepository.save(author);
     }
+
 }

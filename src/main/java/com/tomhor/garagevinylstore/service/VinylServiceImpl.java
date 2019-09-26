@@ -1,5 +1,6 @@
 package com.tomhor.garagevinylstore.service;
 
+import com.tomhor.garagevinylstore.model.Author;
 import com.tomhor.garagevinylstore.model.Vinyl;
 import com.tomhor.garagevinylstore.repository.VinylRepository;
 import org.springframework.stereotype.Service;
@@ -46,5 +47,10 @@ public class VinylServiceImpl implements VinylService{
     @Override
     public Vinyl save(Vinyl vinyl) {
         return vinylRepository.save(vinyl);
+    }
+
+    @Override
+    public List<Vinyl> findByAuthor(Author author) {
+        return vinylRepository.findByAuthor(author);
     }
 }

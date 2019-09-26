@@ -7,8 +7,6 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Data
@@ -24,9 +22,7 @@ public class Vinyl {
     @DecimalMin(value = "0.01", message = "podaj wartość płyty większą od 0")
     private BigDecimal price;
 
-    @ManyToMany
-    @JoinTable(name = "AUTHOR_VINYL",
-            joinColumns = @JoinColumn(name = "author_id"),
-            inverseJoinColumns = @JoinColumn(name = "vinyl_id"))
-    private List<Author> sections = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn
+    private Author author;
 }
